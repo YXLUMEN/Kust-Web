@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../img/aeico.webp">
+    <!-- 引入css文件 -->
+    <link rel="stylesheet" href="../css/login.css">
+    <style>
+        #back {
+            font-family: '华文行楷', serif;
+            text-decoration: none
+        }</style>
+    <title>登录</title>
+</head>
+<body>
+<div><a id="back" href="./index.html">返回开始</a></div>
+<!-- 最外层的大盒子 -->
+<div class="box">
+    <!-- 滑动盒子 -->
+    <div class="pre-box">
+        <h1>WELCOME</h1>
+        <p>JOIN US!</p>
+        <div class="img-box">
+            <img src="../img/kl.webp" alt="">
+        </div>
+    </div>
+    <!-- 注册盒子 -->
+    <div class="register-form">
+        <!-- 标题盒子 -->
+        <div class="title-box">
+            <h1>注册</h1>
+        </div>
+        <!-- 输入框盒子 -->
+        <form action="../register.php" method="post"
+              onsubmit="return checkPassword() && validateMail() && checkStrong()">
+            <div class="input-box">
+                <label for="accountReg"></label>
+                <input id="accountReg" name="accountReg" type="text" maxlength="20" placeholder="用户名" required>
+                <label for="email"></label>
+                <input id="email" name="email" type="text" placeholder="电子邮箱" required>
+                <label for="passwordReg"></label>
+                <input id="passwordReg" name="passwordReg" type="password" maxlength="25" placeholder="密码" required>
+                <label for="rePasswordReg"></label>
+                <input id="rePasswordReg" type="password" maxlength="25" placeholder="确认密码" required>
+            </div>
+            <!-- 按钮盒子 -->
+            <div class="btn-box">
+                <button type="submit" id="register">注册</button>
+                <!-- 绑定点击事件 -->
+                <p onclick="mySwitch()">已有账号?去登录</p>
+            </div>
+        </form>
+    </div>
+    <!-- 登录盒子 -->
+    <div class="login-form">
+        <!-- 标题盒子 -->
+        <div class="title-box">
+            <h1>登录</h1>
+        </div>
+        <!-- 输入框盒子 -->
+        <form action="../login.php" method="post">
+            <div class="input-box">
+                <label for="account"></label><input id="account" name="account" type="text" placeholder="用户名">
+                <label for="password"></label><input id="password" name="password" type="password" placeholder="密码">
+            </div>
+            <!-- 按钮盒子 -->
+            <div class="btn-box">
+                <button type="submit">登录</button>
+                <!-- 绑定点击事件 -->
+                <p onclick="mySwitch()">没有账号?去注册</p>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- 引入jquery -->
+<script async src="../javascript/jquery-latest.js"></script>
+<script src="../javascript/check.js"></script>
+<script>
+    // 滑动的状态
+    let flag = true;
+    const mySwitch = () => {
+        if (flag) {
+            // 获取到滑动盒子的dom元素并修改它移动的位置
+            $(".pre-box").css("transform", "translateX(100%)");
+            // 获取到滑动盒子的dom元素并修改它的背景颜色
+            $(".pre-box").css("background-color", "#c9e0ed");
+            //修改图片的路径
+            $("img").attr("src", "../img/ctl.webp");
+
+        } else {
+            $(".pre-box").css("transform", "translateX(0%)");
+            $(".pre-box").css("background-color", "#ffedb9");
+            $("img").attr("src", "../img/kl.webp");
+        }
+        flag = !flag;
+    };
+
+    const bubbleCreate = () => {
+        // 获取body元素
+        const body = document.body;
+        // 创建泡泡元素
+        const bubble = document.createElement('span');
+        // 设置泡泡半径
+        const r = Math.random() * 5 + 25; //半径大小为25~30
+        // 设置泡泡的宽高
+        bubble.style.width = r + 'px';
+        bubble.style.height = r + 'px';
+        // 设置泡泡的随机起点
+        bubble.style.left = Math.random() * innerWidth + 'px';
+        // 为body添加bubble元素
+        body.append(bubble);
+        // 4s清除一次泡泡
+        setTimeout(() => bubble.remove(), 4000);
+    };
+
+    // 每200ms生成一个泡泡
+    setInterval(() => bubbleCreate(), 200);
+</script>
+</body>
+</html>
