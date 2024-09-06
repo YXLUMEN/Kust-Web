@@ -26,7 +26,7 @@
                     使役性能及安全，环境影响及保护，再制造特性及方法等要素及其相互关系和制约规律，并研究材料与
                     构件的生产过程及其技术，制成具有一定使用性能和经济价值的材料及构件的学科。
                 </p>
-                <p class="btn" id="tow" onclick="toWiki()">
+                <p class="btn" id="tow">
                     <a class="btn">MORE INFORMATION</a>
                 </p>
             </div>
@@ -54,7 +54,7 @@
                     4001人，其中，专任教师2732人，有在籍学生49838人（含留学生697人），其中本科生34017人（含留学生281人），研究生15821人
                     （含留学生416人）
                 </p>
-                <p id="lc" onclick="toOfficeWeb()">
+                <p id="lc">
                     <a class="btn">WHERE <strong>IT </strong><em>IS</em></a>
                 </p>
             </div>
@@ -68,7 +68,7 @@
                     2022年，我来到了昆工......
                 </p>
                 <p>
-                    <a href="./login.html" class="btn">JOIN <em>US</em></a>
+                    <a href="login.html" class="btn">JOIN <em>US</em></a>
                 </p>
             </div>
         </div>
@@ -80,12 +80,7 @@
 </div>
 </body>
 <script type="text/javascript">
-    function toWiki() {
-        window.open("https://baike.baidu.com/item/%E6%9D%90%E6%96%99%E7%A7%91%E5%AD%A6%E4%B8%8E%E5%B7%A5%E7%A8%8B/5341532")
-    }
-
-    function toOfficeWeb() {
-        window.open("https://cn.bing.com/maps?q=%E6%98%86%E6%98%8E%E7%90%86%E5%B7%A5%E5%A4%A7%E5%AD%A6")
-    }
+    document.getElementById('tow').addEventListener('click', () => window.open("https://baike.baidu.com/item/%E6%9D%90%E6%96%99%E7%A7%91%E5%AD%A6%E4%B8%8E%E5%B7%A5%E7%A8%8B/5341532"));
+    document.getElementById('lc').addEventListener('click', () => window.open("https://cn.bing.com/maps?q=%E6%98%86%E6%98%8E%E7%90%86%E5%B7%A5%E5%A4%A7%E5%AD%A6"));
 </script>
 </html>
