@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../img/aeico.webp">
     <link rel="stylesheet" href="../css/login.css">
-    <script src="../javascript/check.js"></script>
     <title>登录</title>
 </head>
 <body>
@@ -18,7 +17,7 @@
         <h1>WELCOME</h1>
         <p>JOIN US!</p>
         <div class="img-box">
-            <img src="../img/kl.webp" alt="">
+            <img id="box-img" src="../img/kl.webp" alt="">
         </div>
     </div>
     <!-- 注册盒子 -->
@@ -28,8 +27,7 @@
             <h1>注册</h1>
         </div>
         <!-- 输入框盒子 -->
-        <form action="../register.php" method="post"
-              onsubmit="return checkPassword() && validateMail() && checkStrong()">
+        <form method="post" onsubmit="return checkPassword() && validateMail() && checkStrong()">
             <div class="input-box">
                 <label for="accountReg"></label>
                 <input id="accountReg" name="accountReg" type="text" maxlength="20" placeholder="用户名" required>
@@ -44,7 +42,7 @@
             <div class="btn-box">
                 <button type="submit" id="register">注册</button>
                 <!-- 绑定点击事件 -->
-                <p onclick="mySwitch()">已有账号?去登录</p>
+                <p id="login-btn">已有账号?去登录</p>
             </div>
         </form>
     </div>
@@ -55,7 +53,7 @@
             <h1>登录</h1>
         </div>
         <!-- 输入框盒子 -->
-        <form action="../login.php" method="post">
+        <form method="post">
             <div class="input-box">
                 <label for="account"></label><input id="account" name="account" type="text" placeholder="用户名">
                 <label for="password"></label><input id="password" name="password" type="password" placeholder="密码">
@@ -64,31 +62,28 @@
             <div class="btn-box">
                 <button type="submit">登录</button>
                 <!-- 绑定点击事件 -->
-                <p onclick="mySwitch()">没有账号?去注册</p>
+                <p id="registry-btn">没有账号?去注册</p>
             </div>
         </form>
     </div>
 </div>
-<!-- 引入jquery -->
-<script async src="../javascript/jquery-latest.js"></script>
-<script>
-    // 滑动的状态
-    let flag = true;
-    const mySwitch = () => {
-        if (flag) {
-            // 获取到滑动盒子的dom元素并修改它移动的位置
-            $(".pre-box").css("transform", "translateX(100%)");
-            // 获取到滑动盒子的dom元素并修改它的背景颜色
-            $(".pre-box").css("background-color", "#c9e0ed");
-            //修改图片的路径
-            $("img").attr("src", "../img/ctl.webp");
-        } else {
-            $(".pre-box").css("transform", "translateX(0%)");
-            $(".pre-box").css("background-color", "#ffedb9");
-            $("img").attr("src", "../img/kl.webp");
+<script type="text/javascript">
+    const mySwitch = (() => {
+        let flag = true;
+        const preBoxEle = document.getElementsByClassName('pre-box')[0];
+        const imgBoxEle = document.getElementById('box-img');
+
+        return () => {
+            if (flag) {
+                preBoxEle.style.cssText = 'transform:translateX(100%);background-color:#c9e0ed';
+                imgBoxEle.src = '../img/ctl.webp';
+            } else {
+                preBoxEle.style.cssText = 'transform:translateX(0);background-color:#ffedb9'
+                imgBoxEle.src = '../img/kl.webp';
+            }
+            flag = !flag;
         }
-        flag = !flag;
-    };
+    })();
 
     const bubbleCreate = () => {
         // 获取body元素
@@ -110,6 +105,10 @@
 
     // 每200ms生成一个泡泡
     setInterval(() => bubbleCreate(), 200);
+
+    document.getElementById('login-btn').addEventListener('click', mySwitch);
+    document.getElementById('registry-btn').addEventListener('click', mySwitch);
 </script>
+<script type="text/javascript" src="../javascript/check.js"></script>
 </body>
 </html>

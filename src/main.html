@@ -1,38 +1,10 @@
-<?php
-require_once '../check_login.php';
-if (ifLogin()){
-    echo "您好" ;
-    echo $_SESSION [ 'user' ];
-}
-else {
-    echo  "<script>alert('请登录在浏览哦');window.location='/src/login.html'</script>" ;
-}
-?>
 <!DOCTYPE html>
 <html lang="zh">
 <head>
     <meta charset="utf-8" />
     <title>网页</title>
-    <link rel="shortcut icon" href="../img/aeico.webp">
+    <link rel="shortcut icon" href="/img/aeico.webp">
     <link rel="stylesheet" type="text/css" href="/css/header.css"/>
-    <script type="text/javascript" src="/javascript/jquery-latest.js"></script>
-    <script type="text/javascript">
-        function displayShow(){
-            $(function (){
-                $("#qq").slideDown(200)
-            })
-        }
-        function displayNone(){
-            $(function (){
-                $("#qq").slideUp(200)
-            })
-        }
-        function logout() {
-            if (confirm("您确定要退出吗？")){
-                window.location.replace('../logout.php')
-            }
-        }
-    </script>
 </head>
 <body>
 <div id="container">
@@ -79,7 +51,7 @@ else {
     </div>
 </div>
 <div id="img">
-    <img src="/img/Video.png" width="1690" height="800" alt="">
+    <img src="/img/Video.webp" width="1690" height="800" alt="">
 </div>
 <div id="main" class="main-box">
     <div id="dy" class="text-box">
@@ -237,8 +209,7 @@ else {
             </div>
         </div>
 
-
-        <div id="server" class="text-box">
+    <div id="server" class="text-box">
             <h3>Minecraft Server</h3>
             <div class="box-two">
                 <p>
@@ -255,6 +226,24 @@ else {
 </div>
 <div id="footer" class="text">
 </div>
+<script type="text/javascript" src="/javascript/jquery-latest.js"></script>
+<script type="text/javascript">
+    function displayShow() {
+        $(function () {
+            $("#qq").slideDown(200);
+        });
+    }
+
+    function displayNone() {
+        $(function () {
+            $("#qq").slideUp(200);
+        });
+    }
+
+    function logout() {
+        if (confirm("您确定要退出吗？")) window.location.replace('../logout.php');
+    }
+</script>
 </body>
 </html>
 
